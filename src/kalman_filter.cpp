@@ -64,11 +64,11 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   VectorXd y = z - z_pred;
   
   // Wrap phi to [-pi, pi]
-  while (y(1) > M_PI){
-     y(1) -= M_PI;
+  while (y(1) > M_PI) {
+     y(1) -= 2*M_PI;
   }
-  while (y(1) < - M_PI){
-     y(1) += M_PI;
+  while (y(1) < -M_PI) {
+     y(1) += 2*M_PI;
   }
 
   updatePrediction(y);
